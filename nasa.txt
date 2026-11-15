@@ -1,0 +1,375 @@
+# MISSION FORGE
+## Guia Técnico de Integração de Dados Científicos da NASA
+
+**Projeto:** MISSION FORGE — Design. Engineer. Launch. Discover.  
+**Missão:** LUNAR ICE EXPLORER  
+**Plataforma:** Web  
+**Tecnologias:** React, TypeScript, Vite e Three.js  
+**Objetivo:** Integrar dados científicos reais da NASA no motor de engenharia, simulação e visualização do jogo.
+
+---
+
+# 1. Introdução
+
+O MISSION FORGE é um jogo educativo de engenharia espacial no qual o jogador assume a responsabilidade de projetar, validar, lançar e operar uma missão robótica lunar.
+
+Para aumentar o rigor científico e o valor educativo do projeto, serão utilizados dados provenientes de missões e instrumentos científicos da NASA.
+
+Os dados não devem servir apenas como referências bibliográficas. Devem influenciar diretamente as decisões e os resultados do jogador.
+
+A primeira missão, LUNAR ICE EXPLORER, terá como objetivo investigar evidências de gelo de água na região do polo sul lunar.
+
+# 2. Fontes científicas
+
+As fontes prioritárias são:
+
+| Fonte | Aplicação |
+|---|---|
+| NASA Planetary Data System | Arquivo de dados científicos |
+| Lunar Reconnaissance Orbiter | Dados de exploração lunar |
+| LOLA | Topografia e elevação |
+| Diviner | Temperatura da superfície lunar |
+| NASA Moon Science | Contexto científico |
+| NASA Moon Water and Ices | Evidências de água e gelo |
+
+Links oficiais:
+
+- https://pds.nasa.gov/
+- https://pds-geosciences.wustl.edu/missions/lro/
+- https://science.nasa.gov/moon/
+- https://science.nasa.gov/mission/lro/
+- https://science.nasa.gov/moon/moon-water-and-ices/
+
+# 3. Categorias de dados
+
+## 3.1. Topografia lunar — LOLA
+
+O Lunar Orbiter Laser Altimeter (LOLA), a bordo do Lunar Reconnaissance Orbiter, recolhe medições altimétricas da superfície lunar.
+
+Aplicação no jogo:
+- Representação do relevo lunar.
+- Identificação de crateras.
+- Avaliação de inclinações.
+- Seleção de locais de aterragem.
+- Avaliação da mobilidade do rover.
+
+Primeiro produto a integrar:
+
+LDEM_75S_240M.
+
+Características:
+- Região: 75°S a 90°S.
+- Resolução: 240 metros por pixel.
+- Formato: JPEG2000.
+- Unidade de altitude: metros, após aplicação da conversão adequada.
+
+Ficheiros:
+- ldem_75s_240m.jp2
+- ldem_75s_240m_aux.xml
+- ldem_75s_240m_jp2.lbl
+
+A interpretação dos valores deve respeitar a escala, o offset e a projeção definidos na etiqueta oficial do produto.
+
+Para este produto, a relação de conversão é:
+
+Distância radial = valor bruto × 0,5 + 1.737.400 metros.
+
+Elevação relativa ao raio de referência = distância radial − 1.737.400 metros.
+
+## 3.2. Temperatura lunar — DIVINER
+
+O instrumento Diviner Lunar Radiometer mede a emissão térmica da superfície lunar.
+
+Aplicação no jogo:
+- Modelação das condições térmicas.
+- Gestão do consumo energético.
+- Avaliação dos sistemas de controlo térmico.
+- Simulação de períodos de exposição a temperaturas extremas.
+
+Os dados devem ser selecionados de acordo com a região e o período de observação.
+
+Não utilizar valores genéricos como se fossem medições específicas do polo sul.
+
+## 3.3. Evidências de água e gelo
+
+Integrar informação científica sobre:
+- Regiões permanentemente sombreadas.
+- Evidências de hidrogénio e água lunar.
+- Resultados de missões e instrumentos anteriores.
+- Incerteza associada à distribuição do gelo.
+
+Aplicação no jogo:
+- Seleção de locais de exploração.
+- Definição de objetivos científicos.
+- Avaliação do interesse de cada região.
+- Pontuação científica da missão.
+
+Uma região permanentemente sombreada não deve ser automaticamente classificada como contendo gelo confirmado.
+
+## 3.4. Iluminação lunar
+
+A iluminação influencia a produção de energia dos painéis solares.
+
+Aplicação no jogo:
+- Estimativa da disponibilidade de energia solar.
+- Planeamento de períodos de operação.
+- Escolha de locais para aterragem.
+- Gestão das baterias.
+
+# 4. Estrutura técnica
+
+Adicionar a seguinte organização ao projeto:
+
+```text
+mission-forge/
+├── public/
+│   └── data/
+│       └── nasa/
+│           ├── raw/
+│           │   ├── lola/
+│           │   └── diviner/
+│           └── processed/
+│               ├── lunar-elevation.json
+│               ├── lunar-temperature.json
+│               ├── lunar-sites.json
+│               └── scientific-evidence.json
+│
+├── src/
+│   ├── data/
+│   │   └── nasa/
+│   │       ├── sources.ts
+│   │       ├── nasaDataLoader.ts
+│   │       ├── nasaDataMapper.ts
+│   │       └── nasaDataValidator.ts
+│   │
+│   ├── engine/
+│   │   └── environment/
+│   │       ├── terrainModel.ts
+│   │       ├── temperatureModel.ts
+│   │       ├── illuminationModel.ts
+│   │       └── iceEvidenceModel.ts
+│   │
+│   └── three/
+│       └── scenes/
+│           └── LunarScene.ts
+│
+└── docs/
+    ├── SCIENCE_SOURCES.md
+    ├── DATA_METHODOLOGY.md
+    └── ASSETS_LICENSES.md
+```
+
+# 5. Preparação inicial no VS Code
+
+Abrir o terminal PowerShell na pasta do projeto.
+
+Criar as pastas:
+
+```powershell
+New-Item -ItemType Directory -Force -Path `
+"public/data/nasa/raw/lola", `
+"public/data/nasa/raw/diviner", `
+"public/data/nasa/processed", `
+"src/data/nasa", `
+"src/engine/environment", `
+"docs"
+```
+
+Confirmar a estrutura:
+
+```powershell
+Get-ChildItem public/data/nasa -Recurse
+```
+
+# 6. Primeiro download — LOLA
+
+Executar:
+
+```powershell
+$base = "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/DATA/LOLA_GDR/polar/jp2"
+
+Invoke-WebRequest "$base/ldem_75s_240m.jp2" `
+-OutFile "public/data/nasa/raw/lola/ldem_75s_240m.jp2"
+
+Invoke-WebRequest "$base/ldem_75s_240m_aux.xml" `
+-OutFile "public/data/nasa/raw/lola/ldem_75s_240m_aux.xml"
+
+Invoke-WebRequest "$base/ldem_75s_240m_jp2.lbl" `
+-OutFile "public/data/nasa/raw/lola/ldem_75s_240m_jp2.lbl"
+```
+
+Verificar os ficheiros:
+
+```powershell
+Get-ChildItem public/data/nasa/raw/lola
+```
+
+Se algum download falhar, consultar o catálogo oficial do PDS e confirmar o caminho e a disponibilidade do produto.
+
+# 7. Registo da fonte científica
+
+Criar:
+
+`src/data/nasa/sources.ts`
+
+```typescript
+export interface ScientificDataSource {
+  id: string;
+  name: string;
+  mission: string;
+  instrument: string;
+  productId: string;
+  sourceUrl: string;
+  unit: string;
+  format: string;
+  dataType: "real" | "simplified" | "hypothetical";
+}
+
+export const lolaSource: ScientificDataSource = {
+  id: "lro-lola-75s-240m",
+  name: "Lunar South Polar Elevation Model",
+  mission: "Lunar Reconnaissance Orbiter",
+  instrument: "LOLA",
+  productId: "LRO-L-LOLA-4-GDR-V1.0",
+  sourceUrl: "https://pds-geosciences.wustl.edu/",
+  unit: "meters",
+  format: "JPEG2000",
+  dataType: "real"
+};
+```
+
+Este registo identifica a origem do conjunto de dados. Não substitui a leitura e interpretação dos metadados do ficheiro original.
+
+# 8. Processamento dos dados
+
+Os ficheiros JPEG2000 não devem ser tratados como imagens normais.
+
+Utilizar GDAL ou outra ferramenta compatível com o produto científico.
+
+Objetivos:
+1. Ler o raster.
+2. Interpretar a projeção geográfica.
+3. Aplicar escala e offset.
+4. Converter os valores para elevação.
+5. Extrair uma área relevante.
+6. Reduzir a resolução, se necessário.
+7. Exportar um heightmap e uma representação numérica.
+
+Formatos de saída possíveis:
+- PNG em escala de cinzentos para visualização.
+- JSON para amostras numéricas.
+- GeoTIFF para conservar informação geográfica durante o processamento.
+
+Evitar converter todo o raster para JSON se o ficheiro for demasiado grande.
+
+# 9. Integração no motor de simulação
+
+Os dados processados devem ser utilizados por módulos independentes.
+
+## Terrain Model
+
+Responsabilidades:
+- Consultar elevação.
+- Estimar inclinação.
+- Identificar zonas de maior risco.
+- Avaliar locais de aterragem.
+
+## Temperature Model
+
+Responsabilidades:
+- Consultar condições térmicas.
+- Estimar impacto no equipamento.
+- Ajustar consumo energético.
+- Avaliar necessidade de proteção térmica.
+
+## Illumination Model
+
+Responsabilidades:
+- Estimar disponibilidade de luz solar.
+- Calcular produção de energia.
+- Identificar períodos de baixa iluminação.
+
+## Ice Evidence Model
+
+Responsabilidades:
+- Consultar evidências científicas.
+- Classificar interesse científico.
+- Distinguir evidência de hipótese.
+- Influenciar a seleção de locais.
+
+# 10. Integração com Three.js
+
+O Three.js deve receber os dados processados e transformá-los numa representação visual.
+
+O terreno pode ser criado através de uma geometria de elevação:
+
+- Cada ponto do heightmap corresponde a uma posição.
+- O valor de elevação determina a altura.
+- As cores podem representar altitude ou condições ambientais.
+- Crateras e regiões de interesse podem receber marcadores.
+
+A visualização não deve executar cálculos científicos nem alterar os resultados do motor de simulação.
+
+# 11. Transparência científica
+
+Todos os dados devem ser acompanhados por metadados:
+
+```typescript
+interface ScientificDataset {
+  id: string;
+  name: string;
+  source: string;
+  sourceUrl: string;
+  mission: string;
+  instrument?: string;
+  unit: string;
+  retrievedAt: string;
+  dataType: "real" | "simplified" | "hypothetical";
+  processingMethod: string;
+  uncertainty?: string;
+  limitations?: string[];
+}
+```
+
+Regras:
+- Não inventar medições.
+- Não atribuir valores fictícios à NASA.
+- Não esconder simplificações.
+- Não confundir evidência científica com certeza.
+- Preservar a referência aos produtos originais.
+- Documentar as transformações realizadas.
+
+# 12. Plano de implementação
+
+| Etapa | Tarefa | Resultado |
+|---|---|---|
+| 1 | Criar estrutura | Pastas científicas |
+| 2 | Descarregar LOLA | Raster original |
+| 3 | Verificar metadados | Unidades e projeção |
+| 4 | Processar raster | Heightmap |
+| 5 | Integrar Three.js | Terreno lunar |
+| 6 | Obter dados Diviner | Modelo térmico |
+| 7 | Integrar evidências de gelo | Locais científicos |
+| 8 | Ligar ao motor | Decisões com consequências |
+| 9 | Testar | Simulação coerente |
+
+# 13. Critérios de conclusão
+
+A integração inicial será considerada funcional quando:
+
+- O jogo conseguir carregar os dados científicos locais.
+- A origem dos dados estiver documentada.
+- O terreno apresentado for derivado do produto LOLA.
+- A elevação for interpretada com a escala e o offset corretos.
+- O motor conseguir consultar os dados ambientais.
+- Os resultados forem independentes da renderização.
+- Os dados simplificados estiverem identificados.
+- A aplicação funcionar sem depender de uma ligação à NASA durante a partida.
+
+---
+
+**Resultado esperado:**
+
+O MISSION FORGE deverá permitir ao jogador construir uma missão lunar utilizando informação científica real, compreender as condições do ambiente lunar e perceber como as suas escolhas de engenharia influenciam o sucesso da exploração.
+
+**MISSION FORGE — Design. Engineer. Launch. Discover.**
