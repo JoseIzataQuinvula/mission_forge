@@ -11,7 +11,8 @@ lunar south pole.
 
 **https://mission-forge-sigma.vercel.app/**
 
-See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for deployment details.
+- **Project info page (resumo, dados NASA, declaração de SI):** https://mission-forge-sigma.vercel.app/project.html
+- See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for deployment details.
 
 ## Requirements
 

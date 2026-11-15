@@ -120,7 +120,11 @@ function App() {
 
       <footer className="app-footer">
         <span>MISSION FORGE · educational prototype for the NASA Space Apps Challenge 2026</span>
-        <span>Independent project. Not affiliated with or sponsored by NASA.</span>
+        <span>
+          <a href="./project.html">Project info · dados e metodologia</a>
+          {' · '}
+          Independent project. Not affiliated with or sponsored by NASA.
+        </span>
       </footer>
     </div>
   );

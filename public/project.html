@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MISSION FORGE — Projeto · NASA Space Apps Challenge 2026</title>
+<meta name="description" content="Resumo, detalhes, dados NASA e declaração de uso de Superinteligência do projeto MISSION FORGE — NASA Space Apps Challenge 2026, equipe CometX1." />
+<style>
+  :root {
+    --bg: #080D16;
+    --surface: #111B2A;
+    --surface-2: #16223a;
+    --text: #F1F5F9;
+    --muted: #94A3B8;
+    --accent: #39BDF8;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --border: #22304a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  code {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: "JetBrains Mono", "Cascadia Code", ui-monospace, Consolas, monospace;
+    font-size: .9em;
+    word-break: break-all;
+  }
+  header.page {
+    padding: 40px 24px 24px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #0d1626 0%, var(--bg) 100%);
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  .brand {
+    font-size: 13px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent); margin: 0 0 8px;
+  }
+  h1 { margin: 0 0 6px; font-size: clamp(26px, 4vw, 38px); line-height: 1.2; }
+  .sub { color: var(--muted); margin: 0; }
+  .badges { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .badge {
+    display: inline-block; padding: 8px 14px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--border);
+    font-size: 14px; color: var(--text);
+  }
+  .badge.accent { border-color: var(--accent); color: var(--accent); }
+  main { padding: 12px 24px 48px; }
+  section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 24px;
+  }
+  h2 {
+    margin: 0 0 4px; font-size: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  h2 .tag {
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 999px; font-weight: 600;
+  }
+  h3 { margin: 20px 0 6px; font-size: 16px; color: var(--accent); }
+  p { margin: 10px 0; color: #cbd5e1; }
+  .lang { color: var(--muted); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; margin-top: 18px; }
+  ul { margin: 8px 0; padding-left: 22px; color: #cbd5e1; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--surface-2); color: var(--text); }
+  td { color: #cbd5e1; }
+  .ok { color: var(--success); font-weight: 700; }
+  .no { color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 12px; }
+  .card { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+  .card b { color: var(--text); }
+  .card p { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+  .watermark {
+    margin-top: 24px; padding: 14px 16px; border-radius: 10px;
+    border: 1px dashed var(--warning); color: var(--warning);
+    font-size: 14px; background: rgba(245, 158, 11, .06);
+  }
+  footer.page {
+    border-top: 1px solid var(--border);
+    padding: 22px 24px 40px; text-align: center; color: var(--muted); font-size: 13px;
+  }
+  .links li { margin: 7px 0; word-break: break-all; }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="wrap">
+    <p class="brand">NASA Space Apps Challenge 2026 · Equipe CometX1</p>
+    <h1>MISSION FORGE — Lunar Ice Explorer</h1>
+    <p class="sub">Simulador interativo de engenharia de missões espaciais alimentado por dados reais da NASA.</p>
+    <div class="badges">
+      <a class="badge accent" href="./index.html">▶ Jogar agora</a>
+      <a class="badge" href="https://github.com/JoseIzataQuinvula/mission_forge">📁 Repositório GitHub</a>
+      <a class="badge" href="https://www.spaceappschallenge.org/2026/find-a-team/cometx1/">🚀 Página da equipe</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- RESUMO -->
+  <section>
+    <h2>Resumo <span class="tag">50–200 palavras</span></h2>
+    <p class="lang">Português</p>
+    <p><strong>MISSION FORGE</strong> é um simulador interativo de engenharia de missões espaciais que integra dados científicos reais da NASA — topografia <strong>LOLA</strong>, temperaturas <strong>DIVINER</strong> e evidências de gelo de água no Polo Sul Lunar — para dirigir decisões e resultados da simulação. O usuário projeta um robô explorador (energia, massa, térmico, comunicações), valida a missão e simula operações de campo, onde cada escolha responde a condições lunares reais: sombra permanente, variações térmicas extremas e terreno acidentado. Os dados abertos da NASA são baixados, convertidos e documentados metodologicamente (<code>docs/DATA_METHODOLOGY.md</code>), distinguindo evidência observacional de hipótese e sem inventar medições. O jogo funciona offline, tornando-o acessível em escolas e eventos sem infraestrutura. Ao traduzir conjuntos de dados brutos em um jogo decidível, o MISSION FORGE democratiza o acesso à ciência planetária: qualquer pessoa pode entender por que explorar o Polo Sul Lunar exige engenharia cuidadosa — e testar suas próprias hipóteses contra dados reais.</p>
+    <p class="lang">English</p>
+    <p><strong>MISSION FORGE</strong> is an interactive space mission engineering simulator that integrates real NASA scientific data — LOLA topography, DIVINER temperatures, and water-ice evidence at the Lunar South Pole — to drive simulation decisions and outcomes. Users design a field explorer robot (power, mass, thermal, communications), validate the mission, and run field operations where every choice responds to real lunar conditions: permanent shadow, extreme thermal swings, and rugged terrain. NASA open data is downloaded, processed, and methodologically documented, distinguishing observational evidence from hypothesis and never inventing measurements. The game runs fully offline, making it accessible at schools and events without infrastructure. By turning raw datasets into a playable, decision-driven experience, MISSION FORGE democratizes planetary science literacy: anyone can understand why Lunar South Pole exploration demands careful engineering — and test their own hypotheses against real data.</p>
+  </section>
+
+  <!-- DETALHES -->
+  <section>
+    <h2>Detalhes do projeto</h2>
+
+    <p class="lang">Português</p>
+
+    <h3>O que faz e como funciona</h3>
+    <p>O MISSION FORGE é um simulador de engenharia de missões espaciais que roda no navegador. O jogador projeta um robô explorador do Polo Sul Lunar (energia, massa, térmico, comunicações), valida o projeto com um motor de cálculo real e executa simulações de operação de campo. As condições lunares que decidem a partida são alimentadas por dados abertos da NASA: elevação e sombreamento do terreno vêm do modelo digital <strong>LOLA</strong> (LDEM_75S, 240 m/pixel), temperaturas superficiais vêm do produto térmico <strong>DIVINER</strong> (PRP South) e as evidências de gelo de água vêm de medições publicadas (LCROSS em Cabeus). Fluxo: download dos dados brutos → processamento offline por scripts Node.js (decodificação JPEG2000, escala ×0,5 + 173.740 m, geração de JSON/PNG) → modelos ambientais (terreno, temperatura, iluminação, gelo) → motor de simulação → interface. Tudo é empacotado estaticamente, então o jogo funciona sem internet durante o uso.</p>
+
+    <h3>Benefícios</h3>
+    <p>Ensina conceitos reais de engenharia (balanço de energia, térmica, risco de missão) com consequências derivadas de dados lunares verdadeiros, em vez de números fictícios; transforma conjuntos de dados científicos brutos e difíceis de usar em uma experiência decidível e acessível; roda offline em qualquer computador.</p>
+
+    <h3>Impacto pretendido</h3>
+    <p>Alfabetização científica planetária em escolas, museus e eventos: o público entende <em>por que</em> o Polo Sul Lunar é desafiador — sombra permanente, frio extremo, terreno hostil — testando suas próprias hipóteses contra dados reais.</p>
+
+    <h3>Ferramentas e tecnologias</h3>
+    <p>TypeScript, React 18, Vite, Three.js (visualização 3D do terreno lunar), Zustand (estado), Vitest (testes), Node.js (pipeline de dados), codec OpenJPEG (decodificação do DEM JPEG2000), encoder PNG próprio, requisições HTTP Range (extração seletiva do Diviner PRP, 604 MB). Dados: PDS/Wustl (LOLA GDR, Diviner Derived1), literatura publicada (LCROSS; Paige et al., 2010).</p>
+
+    <h3>Aspecto criativo</h3>
+    <p>A separação rigorosa entre visualização e ciência: a cena 3D nunca calcula valores científicos — apenas exibe; todos os números vêm dos modelos documentados. A integração em camadas (topografia → sombreamento → potência solar → risco térmico → evidência de gelo) faz cada pixel de dado da NASA alterar uma decisão de jogo. A integridade científica como mecânica: o jogo distingue explicitamente <em>evidência observacional</em> de <em>hipótese</em> e nunca inventa medições.</p>
+
+    <h3>Fatores considerados pela equipe</h3>
+    <p>Reprodutibilidade (todo o pipeline está em <code>scripts/</code> versionado), documentação metodológica (<code>docs/DATA_METHODOLOGY.md</code>, <code>SCIENCE_SOURCES.md</code>, <code>ASSETS_LICENSES.md</code>), acesso equitativo (offline, sem custo de infraestrutura), precisão sem alarmismo (rótulos de dado simplificado, citação das fontes V2.0 corrigidas) e desempenho (dados pré-processados e embutidos, sem cálculo pesado em tempo de execução).</p>
+
+    <p class="lang">English</p>
+    <h3>What it does / how it works</h3>
+    <p>MISSION FORGE is a browser-based space mission engineering simulator. Players design a Lunar South Pole explorer robot (power, mass, thermal, communications), validate the design with a real calculation engine, and run field operations — where the deciding conditions come from actual NASA open data: terrain elevation and shading from the LOLA digital elevation model (LDEM_75S, 240 m/px), surface temperatures from the DIVINER thermal product (PRP South), and water-ice evidence from published measurements (LCROSS at Cabeus). Pipeline: raw data download → offline processing with Node.js scripts (JPEG2000 decoding, ×0.5 + 1,737,400 m scaling, JSON/PNG generation) → environment models (terrain, temperature, illumination, ice) → simulation engine → UI. Everything is bundled statically, so it runs fully offline.</p>
+    <h3>Benefits &amp; intended impact</h3>
+    <p>Teaches genuine engineering concepts (power budget, thermal, mission risk) whose outcomes derive from real lunar data instead of invented numbers; turns raw scientific datasets into an accessible, decision-driven experience; runs offline on any computer. Impact: planetary science literacy in schools, museums, and hackathon events — people understand <em>why</em> the Lunar South Pole is hard by testing their own hypotheses against real data.</p>
+    <h3>Creative aspect &amp; team considerations</h3>
+    <p>Rigorous separation between visualization and science (the 3D scene never performs scientific calculations); layered integration (topography → shading → solar power → thermal risk → ice evidence) makes every NASA data pixel change a gameplay decision; scientific integrity as gameplay — evidence vs. hypothesis is explicitly labeled. Team factors: reproducibility (pipeline versioned in <code>scripts/</code>), methodological documentation, equitable access (offline), accuracy without sensationalism, and performance (pre-processed, embedded data).</p>
+  </section>
+
+  <!-- SI -->
+  <section>
+    <h2>Uso de Superinteligência (SI) <span class="tag">Declaração</span></h2>
+    <p>Conforme as regras da NASA Space Apps Challenge, declaramos onde ferramentas de Superinteligência (SI) — modelos de linguagem — foram utilizadas:</p>
+    <table>
+      <thead><tr><th>Categoria</th><th>Utilizado?</th><th>Detalhe</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Código e dados</td>
+          <td class="ok">SIM</td>
+          <td>Assistente de desenvolvimento baseado em modelo de linguagem foi usado para escrever e revisar código (TypeScript/React/Node.js), scripts de processamento de dados e documentação. Todo o conteúdo gerado foi revisado, testado e validado pela equipe (testes automatizados e verificação dos metadados das fontes NASA/PDS).</td>
+        </tr>
+        <tr><td>Imagens e vídeos</td><td class="no">NÃO</td><td>Nenhuma imagem ou vídeo foi gerado por SI. Os visuais 3D são renderizados por código (Three.js) em tempo de execução.</td></tr>
+        <tr><td>Áudio</td><td class="no">NÃO</td><td>O projeto não contém áudio.</td></tr>
+      </tbody>
+    </table>
+    <div class="watermark">
+      ⚠ Marca d'água de SI: texto descritivo e código deste projeto foram gerados/iterados com auxílio de Superinteligência (IA) e revisados pela equipe. Nenhum elemento de marca ou design da NASA foi gerado ou modificado por SI.
+    </div>
+  </section>
+
+  <!-- DADOS NASA -->
+  <section>
+    <h2>Dados da NASA <span class="tag">Elegibilidade</span></h2>
+    <ul class="links">
+      <li><b>LOLA Digital Elevation Model — LDEM_75S</b> (topografia do Polo Sul, 240 m/px)<br><code>https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/DATA/LOLA_GDR/polar/jp2</code></li>
+      <li><b>LRO Diviner — PRP South Thermal Product</b> (temperaturas e gelo de água)<br><code>https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_prp/</code></li>
+      <li><b>NASA Science — Lunar Reconnaissance Orbiter</b> (LOLA / Diviner)<br><code>https://science.nasa.gov/mission/lro/</code></li>
+      <li><b>NASA Science — LCROSS</b> (confirmação de gelo de água em Cabeus)<br><code>https://science.nasa.gov/mission/lcross/</code></li>
+    </ul>
+  </section>
+
+  <!-- OUTROS RECURSOS -->
+  <section>
+    <h2>Parceiros da Agência Espacial e outros dados <span class="tag">Recursos</span></h2>
+
+    <h3>Dados e literatura</h3>
+    <ul class="links">
+      <li><b>Wikipedia — Cabeus (crater)</b>: coordenadas do sítio do impacto LCROSS<br><code>https://en.wikipedia.org/wiki/Cabeus_(crater)</code></li>
+      <li><b>Paige et al. (2010), Science</b>: modelo térmico Diviner (referência científica)<br><code>https://www.science.org/doi/10.1126/science.1192033</code></li>
+      <li><b>Diviner Lunar Radiometer Experiment</b> (site do instrumento, UCLA/NASA)<br><code>https://diviner.ucla.edu/</code></li>
+    </ul>
+
+    <h3>Código e ferramentas (open source)</h3>
+    <div class="grid">
+      <div class="card"><b>React 18</b> — interface<br><p>MIT · <a href="https://react.dev/">react.dev</a></p></div>
+      <div class="card"><b>Three.js</b> — renderização 3D<br><p>MIT · <a href="https://threejs.org/">threejs.org</a></p></div>
+      <div class="card"><b>@react-three/fiber</b> — integração React/Three<br><p>MIT · <a href="https://github.com/pmndrs/react-three-fiber">GitHub</a></p></div>
+      <div class="card"><b>Vite</b> — build e dev server<br><p>MIT · <a href="https://vitejs.dev/">vitejs.dev</a></p></div>
+      <div class="card"><b>TypeScript</b> — tipagem<br><p>Apache-2.0 · <a href="https://www.typescriptlang.org/">typescriptlang.org</a></p></div>
+      <div class="card"><b>Zustand</b> — estado global<br><p>MIT · <a href="https://github.com/pmndrs/zustand">GitHub</a></p></div>
+      <div class="card"><b>Lucide React</b> — ícones<br><p>ISC · <a href="https://lucide.dev/">lucide.dev</a></p></div>
+      <div class="card"><b>Vitest</b> — testes<br><p>MIT · <a href="https://vitest.dev/">vitest.dev</a></p></div>
+      <div class="card"><b>Node.js</b> — pipeline de dados<br><p>MIT · <a href="https://nodejs.org/">nodejs.org</a></p></div>
+      <div class="card"><b>OpenJPEG codec</b> — decodificação do DEM JPEG2000<br><p>BSD-2 · <a href="https://www.npmjs.com/package/@cornerstonejs/codec-openjpeg">npm</a></p></div>
+    </div>
+
+    <h3>Hospedagem e código</h3>
+    <ul class="links">
+      <li><b>Repositório do projeto</b><br><code>https://github.com/JoseIzataQuinvula/mission_forge</code></li>
+      <li><b>Site do projeto</b><br><code>https://mission-forge-sigma.vercel.app/</code></li>
+    </ul>
+  </section>
+
+  <!-- DOCS -->
+  <section>
+    <h2>Documentação científica <span class="tag">Transparência</span></h2>
+    <ul class="links">
+      <li><a href="https://github.com/JoseIzataQuinvula/mission_forge/blob/main/docs/SCIENCE_SOURCES.md">docs/SCIENCE_SOURCES.md</a> — fontes científicas</li>
+      <li><a href="https://github.com/JoseIzataQuinvula/mission_forge/blob/main/docs/ASSETS_LICENSES.md">docs/ASSETS_LICENSES.md</a> — assets e licenças (cena 100% procedural, sem terceiros)</li>
+      <li><a href="https://github.com/JoseIzataQuinvula/mission_forge/blob/main/docs/GAME_DESIGN.md">docs/GAME_DESIGN.md</a> — design do jogo</li>
+      <li><a href="https://github.com/JoseIzataQuinvula/mission_forge/blob/main/docs/DEPLOYMENT.md">docs/DEPLOYMENT.md</a> — deploy e domínio</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="page">
+  <p>MISSION FORGE · protótipo educacional para o NASA Space Apps Challenge 2026 · Equipe CometX1</p>
+  <p>Projeto independente. Não afiliado, patrocinado ou endossado pela NASA. Não utiliza logotipos, selos ou identidade visual da NASA.</p>
+</footer>
+
+</body>
+</html>
