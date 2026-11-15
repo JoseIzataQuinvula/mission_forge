@@ -7,6 +7,12 @@ lunar south pole.
 
 > Independent project. Not affiliated with, sponsored or endorsed by NASA.
 
+## Live demo
+
+**https://mission-forge-sigma.vercel.app/**
+
+See [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for deployment details.
+
 ## Requirements
 
 - Node.js 18 or newer
@@ -49,6 +55,7 @@ src/
   styles/       tokens and global CSS
   types/        shared contracts
 docs/
+  DEPLOYMENT.md
   SCIENCE_SOURCES.md
   ASSETS_LICENSES.md
   GAME_DESIGN.md
